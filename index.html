@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devil's Realm</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+        body {
+            font-family: 'Creepster', cursive;
+            margin: 0;
+            padding: 0;
+            background: url('https://i.gifer.com/embedded/download/O3Lz.gif') no-repeat center center/cover;
+            color: red;
+            text-align: center;
+            overflow: hidden;
+        }
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        h1 {
+            font-size: 50px;
+            text-shadow: 3px 3px black;
+        }
+        .buttons button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: black;
+            color: red;
+            border: 2px solid red;
+            cursor: pointer;
+        }
+        .buttons button:hover {
+            background-color: red;
+            color: black;
+        }
+        .hidden {
+            display: none;
+        }
+        .form-container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            margin: 20px auto;
+        }
+        input, textarea {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            background: black;
+            color: red;
+            border: 1px solid red;
+        }
+        .glitch {
+            font-size: 24px;
+            animation: glitch 1s infinite;
+        }
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px red; }
+            50% { text-shadow: -2px -2px white; }
+            100% { text-shadow: 2px 2px red; }
+        }
+    </style>
+</head>
+<body>
+    <audio id="horrorMusic" loop>
+        <source src="https://www.fesliyanstudios.com/play-mp3/387" type="audio/mpeg">
+    </audio>
+    <div class="container" id="welcomeScreen">
+        <h1>Welcome to the Devil's Realm</h1>
+        <p class="glitch">Dare to enter?</p>
+        <div class="buttons">
+            <button onclick="enterRealm()">YES</button>
+            <button onclick="scared()">NO</button>
+        </div>
+    </div>
+
+    <div class="hidden" id="formScreen">
+        <h1>Confess Your Dark Secrets</h1>
+        <div class="form-container">
+            <form>
+                <label>Your Name:</label>
+                <input type="text" required>
+                <label>Your Email:</label>
+                <input type="email" required>
+                <label>Your Dark Secret:</label>
+                <textarea rows="4" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function enterRealm() {
+            document.getElementById('welcomeScreen').style.display = 'none';
+            document.getElementById('formScreen').style.display = 'block';
+            document.getElementById('horrorMusic').play();
+        }
+        function scared() {
+            document.getElementById('welcomeScreen').innerHTML = '<h1>Dar Gaye Kya Baby? 😱</h1>';
+        }
+    </script>
+</body>
+</html>
