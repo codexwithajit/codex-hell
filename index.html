@@ -6,35 +6,30 @@
     <title>Devil's Realm</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Creepster', cursive;
-            background: url('https://i.gifer.com/embedded/download/O3Lz.gif') no-repeat center center fixed;
+            background: url('https://i.gifer.com/O3Lz.gif') no-repeat center center fixed;
             background-size: cover;
             color: red;
             text-align: center;
+            overflow: hidden;
             height: 100vh;
-            width: 100vw;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
-
         .container {
-            max-width: 90%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
-
         h1 {
             font-size: 50px;
             text-shadow: 3px 3px black;
         }
-
         .buttons button {
             font-size: 20px;
             padding: 10px 20px;
@@ -43,52 +38,52 @@
             color: red;
             border: 2px solid red;
             cursor: pointer;
-            transition: 0.3s;
         }
-
         .buttons button:hover {
             background-color: red;
             color: black;
         }
-
         .hidden {
             display: none;
         }
-
+        .intro {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            background: black;
+            color: red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            animation: fadeOut 3s forwards;
+        }
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; visibility: hidden; }
+        }
         .form-container {
             background: rgba(0, 0, 0, 0.8);
             padding: 20px;
             border-radius: 10px;
             max-width: 400px;
-            margin: auto;
+            margin: 20px auto;
         }
-
         input, textarea {
-            width: 100%;
+            width: 90%;
             padding: 10px;
             margin: 10px 0;
             background: black;
             color: red;
             border: 1px solid red;
         }
-
-        .glitch {
-            font-size: 24px;
-            animation: glitch 1s infinite;
-        }
-
-        @keyframes glitch {
-            0% { text-shadow: 2px 2px red; }
-            50% { text-shadow: -2px -2px white; }
-            100% { text-shadow: 2px 2px red; }
-        }
     </style>
 </head>
 <body>
+    <div class="intro">Made by Ajit...</div>
     <audio id="horrorMusic" loop>
         <source src="https://www.fesliyanstudios.com/play-mp3/387" type="audio/mpeg">
     </audio>
-
     <div class="container" id="welcomeScreen">
         <h1>Welcome to the Devil's Realm</h1>
         <p class="glitch">Dare to enter?</p>
@@ -97,7 +92,6 @@
             <button onclick="scared()">NO</button>
         </div>
     </div>
-
     <div class="hidden" id="formScreen">
         <h1>Confess Your Dark Secrets</h1>
         <div class="form-container">
@@ -112,16 +106,45 @@
             </form>
         </div>
     </div>
-
+    <div class="hidden" id="darkWebScreen">
+        <h1>Do you want to know about the Dark Web?</h1>
+        <div class="buttons">
+            <button onclick="showDarkWebFacts()">YES</button>
+            <button onclick="exitSite()">NO</button>
+        </div>
+    </div>
+    <div class="hidden" id="darkWebFacts">
+        <h1>Dark Web Facts</h1>
+        <ul>
+            <li>The Dark Web is 500 times larger than the Surface Web.</li>
+            <li>It contains disturbing illegal markets and hidden services.</li>
+            <li>Many hackers and cybercriminals operate here.</li>
+            <li>Some say there are secret government experiments happening.</li>
+            <li>People claim they have seen red rooms, where live torture happens.</li>
+        </ul>
+        <button onclick="goBack()">Go Back</button>
+    </div>
     <script>
         function enterRealm() {
             document.getElementById('welcomeScreen').style.display = 'none';
             document.getElementById('formScreen').style.display = 'block';
             document.getElementById('horrorMusic').play();
+            alert('Warning: Once you enter, there is no going back...');
         }
-
         function scared() {
-            document.getElementById('welcomeScreen').innerHTML = '<h1>Hehe, are you scared? 😱</h1>';
+            document.getElementById('welcomeScreen').style.display = 'none';
+            document.getElementById('darkWebScreen').style.display = 'block';
+        }
+        function showDarkWebFacts() {
+            document.getElementById('darkWebScreen').style.display = 'none';
+            document.getElementById('darkWebFacts').style.display = 'block';
+        }
+        function exitSite() {
+            document.body.innerHTML = '<h1>You don\'t belong here. Leave now!</h1>';
+        }
+        function goBack() {
+            document.getElementById('darkWebFacts').style.display = 'none';
+            document.getElementById('welcomeScreen').style.display = 'block';
         }
     </script>
 </body>
