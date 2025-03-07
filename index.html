@@ -6,25 +6,35 @@
     <title>Devil's Realm</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
-        body {
-            font-family: 'Creepster', cursive;
+        
+        * {
             margin: 0;
             padding: 0;
-            background: url('https://i.gifer.com/embedded/download/O3Lz.gif') no-repeat center center/cover;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Creepster', cursive;
+            background: url('https://i.gifer.com/embedded/download/O3Lz.gif') no-repeat center center fixed;
+            background-size: cover;
             color: red;
             text-align: center;
-            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+
         .container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            max-width: 90%;
         }
+
         h1 {
             font-size: 50px;
             text-shadow: 3px 3px black;
         }
+
         .buttons button {
             font-size: 20px;
             padding: 10px 20px;
@@ -33,33 +43,40 @@
             color: red;
             border: 2px solid red;
             cursor: pointer;
+            transition: 0.3s;
         }
+
         .buttons button:hover {
             background-color: red;
             color: black;
         }
+
         .hidden {
             display: none;
         }
+
         .form-container {
             background: rgba(0, 0, 0, 0.8);
             padding: 20px;
             border-radius: 10px;
             max-width: 400px;
-            margin: 20px auto;
+            margin: auto;
         }
+
         input, textarea {
-            width: 90%;
+            width: 100%;
             padding: 10px;
             margin: 10px 0;
             background: black;
             color: red;
             border: 1px solid red;
         }
+
         .glitch {
             font-size: 24px;
             animation: glitch 1s infinite;
         }
+
         @keyframes glitch {
             0% { text-shadow: 2px 2px red; }
             50% { text-shadow: -2px -2px white; }
@@ -71,6 +88,7 @@
     <audio id="horrorMusic" loop>
         <source src="https://www.fesliyanstudios.com/play-mp3/387" type="audio/mpeg">
     </audio>
+
     <div class="container" id="welcomeScreen">
         <h1>Welcome to the Devil's Realm</h1>
         <p class="glitch">Dare to enter?</p>
@@ -101,8 +119,9 @@
             document.getElementById('formScreen').style.display = 'block';
             document.getElementById('horrorMusic').play();
         }
+
         function scared() {
-            document.getElementById('welcomeScreen').innerHTML = '<h1>hehe are you scared? 😱</h1>';
+            document.getElementById('welcomeScreen').innerHTML = '<h1>Hehe, are you scared? 😱</h1>';
         }
     </script>
 </body>
